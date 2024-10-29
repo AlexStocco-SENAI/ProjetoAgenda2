@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using ProjetoAgenda.Controllers;
+using ProjetoAgenda.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,11 +46,11 @@ namespace ProjetoAgenda
             //Caso não encontre nenhum erro habilita o botão cadastrar
             if (erro == false)
             {
-                btnCCadastrar.Enabled = true;
+                btnCadastrar.Enabled = true;
             }
             else
             {
-                btnCCadastrar.Enabled = false;
+                btnCadastrar.Enabled = false;
             }
         }
 
@@ -59,6 +62,8 @@ namespace ProjetoAgenda
 
         private void label5_Click(object sender, EventArgs e)
         {
+            MySqlConnection conexao = Conexao.criaConexao();
+
 
         }
 
@@ -85,6 +90,48 @@ namespace ProjetoAgenda
         private void txtRepeteSenha_TextChanged(object sender, EventArgs e)
         {
             habilitarBotaoCadastrar();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            string nome = txtNome.Text;
+            string login = txtTelefone.Text;
+            string senha = txtSenha.Text;
+
+            UsuarioController usuarioController = new UsuarioController();
+
+            bool resultado = usuarioController.AdicionaUsuario(nome, login, senha);
+
+            if (resultado)
+            {
+                MessageBox.Show("Cadastro efetuado com sucesso!");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UsuarioController usuarioController = new UsuarioController();
+
+            List<string> nome = usuarioController.getUsuarios();
+            
+            Dictionary<string,string> dict = new Dictionary<string, string>(); 
+            List<List<string>> list = new List<List<string>>();
+
+            dataGridView1.Columns.Add("Nome1", "Nome2");
+            dataGridView1.Columns.Add("Nome3", "Nome4");
+
+            // Usa foreach para adicionar cada nome como uma nova linha
+            foreach (var s in nome)
+            {
+                dataGridView1.Rows.Add(s, s); // Adiciona uma nova linha com o nome
+            }
+
+
         }
     }
 }
