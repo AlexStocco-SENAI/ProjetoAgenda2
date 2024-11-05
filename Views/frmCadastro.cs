@@ -110,7 +110,7 @@ namespace ProjetoAgenda
             }
             else
             {
-                MessageBox.Show("Não foi possivel cadastrar o usuário.")
+                MessageBox.Show("Não foi possivel cadastrar o usuário.");
             }
 
         }
