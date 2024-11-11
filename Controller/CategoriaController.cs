@@ -14,14 +14,12 @@ namespace ProjetoAgenda.Controller
         public bool AddCategoria(string categoria)
         {
             MySqlConnection conexao = null;
+
             try
             {
                 conexao = ConexaoDB.CriarConexao();
 
-                string sql = @"INSERT INTO tbcategoria
-	                        (categoria)
-	                        VALUES
-	                        (@categoria);";
+                string sql = "INSERT INTO tbcategoria(categoria) VALUES(@categoria);";
 
                 conexao.Open();
 
@@ -36,11 +34,11 @@ namespace ProjetoAgenda.Controller
                 else
                 { return false; }
 
-                
+
             }
             catch (Exception erro)
             {
-                MessageBox.Show($"ERRO AO CADASTRAR CATEGORIA: {erro.Message}");
+                MessageBox.Show($"ERRO AO INSERIR CATEGORIA: {erro.Message}");
                 return false;
             }
             finally
@@ -51,22 +49,41 @@ namespace ProjetoAgenda.Controller
 
         public DataTable GetCategorias()
         {
+            //Criando uma conexão vazia
             MySqlConnection conexao = null;
 
             try
             {
-                conexao = ConexaoDB.CriarConexao();
+                //Inserindo a conexão usando a ConexaoDB que eu já havia criado
+                 conexao = ConexaoDB.CriarConexao();
 
-                string sql = @"SELECT codCategoria AS 'Código', categoria AS 'Categoria'
-                                FROM tbcategoria;";
+                //Montei o SELECT que retorna todas as categorias
+                string sql = @"select cod_categoria AS 'Código', categoria AS 'Categoria'
+                            from tbcategoria;";
 
+                //Abri a conexão
                 conexao.Open();
 
+                //Crie um adaptador
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(sql, conexao);
 
+                //Criei uma tabela vazia
+                DataTable tabela = new DataTable();
+
+                //Pedindo para o adaptador preencher a tabela
+                adaptador.Fill(tabela);
+
+                //Retorno a tabela preenchida
+                return tabela;
             }
             catch (Exception erro)
             {
-                MessageBox.Show($"Erro ao recuperar categorias: {erro.Message}");
+                MessageBox.Show($"ERRO AO RECUPERAR CATEGORIAS: {erro.Message}");
+                return new DataTable();
+            }
+            finally
+            {
+                conexao.Close();
             }
 
 

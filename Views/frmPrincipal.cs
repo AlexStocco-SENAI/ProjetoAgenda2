@@ -22,16 +22,15 @@ namespace ProjetoAgenda.Views
             this.Close();
         }
 
-        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
+        private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            Application.Exit();
         }
 
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCategoria formularioCategoria = new frmCategoria();
-            formularioCategoria.ShowDialog();   
-
+            frmCategoria janelaCategoria = new frmCategoria();
+            janelaCategoria.ShowDialog();
         }
     }
 }

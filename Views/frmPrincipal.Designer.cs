@@ -56,7 +56,7 @@
             // sairToolStripMenuItem
             // 
             sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            sairToolStripMenuItem.Size = new Size(93, 22);
+            sairToolStripMenuItem.Size = new Size(180, 22);
             sairToolStripMenuItem.Text = "&Sair";
             sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
             // 
@@ -65,21 +65,20 @@
             editarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastroToolStripMenuItem });
             editarToolStripMenuItem.Name = "editarToolStripMenuItem";
             editarToolStripMenuItem.Size = new Size(49, 20);
-            editarToolStripMenuItem.Text = "&Editar";
+            editarToolStripMenuItem.Text = "Editar";
             // 
             // cadastroToolStripMenuItem
             // 
             cadastroToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { categoriaToolStripMenuItem });
             cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             cadastroToolStripMenuItem.Size = new Size(180, 22);
-            cadastroToolStripMenuItem.Text = "&Cadastro";
-            cadastroToolStripMenuItem.Click += cadastroToolStripMenuItem_Click;
+            cadastroToolStripMenuItem.Text = "Cadastro";
             // 
             // categoriaToolStripMenuItem
             // 
             categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
             categoriaToolStripMenuItem.Size = new Size(180, 22);
-            categoriaToolStripMenuItem.Text = "Ca&tegoria";
+            categoriaToolStripMenuItem.Text = "Categoria";
             categoriaToolStripMenuItem.Click += categoriaToolStripMenuItem_Click;
             // 
             // frmPrincipal
@@ -91,6 +90,7 @@
             MainMenuStrip = menuStrip1;
             Name = "frmPrincipal";
             Text = "frmPrincipal";
+            FormClosed += frmPrincipal_FormClosed;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
