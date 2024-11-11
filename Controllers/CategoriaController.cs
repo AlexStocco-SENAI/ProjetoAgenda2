@@ -131,4 +131,35 @@ namespace ProjetoAgenda.Controllers
             }
         }
     }
+
+    private Dictionary<int, string> ObterDados()
+    {
+        string connectionString = "Server=localhost;Database=LojaDB;Uid=root;Pwd=minhaSenha;Port=3306;";
+        Dictionary<int, string> resultados = new Dictionary<int, string>();
+
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                string sql = "SELECT Id, Nome FROM Clientes";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32("Id");
+                        string nome = reader.GetString("Nome");
+                        resultados.Add(id, nome);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter dados: " + ex.Message);
+            }
+        }
+        return resultados;
+    }
 }
