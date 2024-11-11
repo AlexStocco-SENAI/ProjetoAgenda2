@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            txtCategoria = new TextBox();
             btnCadastrar = new Button();
+            txtCategoria = new TextBox();
+            dataGridView1 = new DataGridView();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -45,13 +47,6 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Insira o nome da nova categoria";
             // 
-            // txtCategoria
-            // 
-            txtCategoria.Location = new Point(17, 29);
-            txtCategoria.Name = "txtCategoria";
-            txtCategoria.Size = new Size(177, 23);
-            txtCategoria.TabIndex = 0;
-            // 
             // btnCadastrar
             // 
             btnCadastrar.Location = new Point(18, 63);
@@ -62,16 +57,33 @@
             btnCadastrar.UseVisualStyleBackColor = true;
             btnCadastrar.Click += btnCadastrar_Click;
             // 
+            // txtCategoria
+            // 
+            txtCategoria.Location = new Point(17, 29);
+            txtCategoria.Name = "txtCategoria";
+            txtCategoria.Size = new Size(177, 23);
+            txtCategoria.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(275, 17);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(235, 114);
+            dataGridView1.TabIndex = 1;
+            // 
             // frmCategoria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(248, 149);
+            ClientSize = new Size(535, 149);
+            Controls.Add(dataGridView1);
             Controls.Add(groupBox1);
             Name = "frmCategoria";
             Text = "frmCategoria";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -80,5 +92,6 @@
         private GroupBox groupBox1;
         private Button btnCadastrar;
         private TextBox txtCategoria;
+        private DataGridView dataGridView1;
     }
 }
