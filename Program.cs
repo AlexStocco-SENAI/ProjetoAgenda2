@@ -1,3 +1,5 @@
+using ProjetoAgenda.Views;
+
 namespace ProjetoAgenda
 {
     internal static class Program
@@ -12,7 +14,7 @@ namespace ProjetoAgenda
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new frmLogin());
-            Application.Run(new FrmTeste());
+            Application.Run(new frmPrincipal());
         }
     }
 }
